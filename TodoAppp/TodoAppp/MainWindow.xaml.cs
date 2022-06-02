@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TodoApp
+namespace TodoAppp
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

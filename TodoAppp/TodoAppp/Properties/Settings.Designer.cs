@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TodoApp.Properties
+namespace TodoAppp.Properties
 {
 
 

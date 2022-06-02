@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8EE00A6-B725-4A1D-AAF9-19D388DCFEAE}</ProjectGuid>
+    <ProjectGuid>{3B3AD5A7-FC85-4360-B982-7F53079624F1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TodoApp</RootNamespace>
-    <AssemblyName>TodoApp</AssemblyName>
+    <RootNamespace>TodoAppp</RootNamespace>
+    <AssemblyName>TodoAppp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
