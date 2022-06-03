@@ -5,32 +5,184 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TodoAppp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="50" />
-        </Grid.RowDefinitions>
-        <ListBox x:Name="tasksList" ItemsSource="{Binding}">
-            <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
-                        <StackPanel  Width="200" Height="100" >
-                            <TextBlock Text="{Binding Title}" FontSize="16" />
-                            <TextBlock Text="{Binding Description}" FontSize="12" />
-                            
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="{Binding DeadlineDate}" FontSize="13" />
-                                <Button Content="Изменить" Margin="10" Click="Edit_Click"  />
-                                <Button Content="Удалить" Margin="10" Click="Delete_Click"  />
-                            </StackPanel>
-                        </StackPanel>
+        Title="MainWindow" 
+        Height="600" 
+        Width="1024"
+        ResizeMode="NoResize" 
+        WindowState="Maximized"
+        Background="Transparent">
+    <Border
+    Background="WhiteSmoke"
+    CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+
+                <!--Left Panel-->
+                <ColumnDefinition Width="250"/>
+
+                <!--Main Content-->
+                <ColumnDefinition/>
+
+                <!--Right Panel-->
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <!--Logo-->
+                <TextBlock
+            FontSize="35"
+            FontWeight="Bold"
+            Text="Todo App"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+                <Separator
+                    VerticalAlignment="Bottom"
+                    Background="DarkRed" Margin="20,0,10,2"/>
+                <!--Add Button-->
+
+                <Button 
+                     FontWeight="Bold" 
+                     Grid.Row="1"
+                     Content="Добавить задачу" 
+                     Margin="45,35"        
+                     Click="Add_Click" Height="Auto">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Background" Value="Bisque"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </Button.Style>
+                </Button>
+
+            </Grid>
+
+            <!--Main content-->
+            <Grid
+                Grid.Column="1"
+                Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Main label-->
+                <Grid
+                    Height="131"
+                    VerticalAlignment="Top" Margin="10,10,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Border
+                         CornerRadius="10" 
+                        Margin="40,10,41,10"
+                        Background="AliceBlue">
+                        <Grid 
+                            VerticalAlignment="Center" Height="91" Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock                                
+                                Text="Ваши текущие задачи"
+                                TextAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                FontWeight="Black" Margin="21,10,28,10"/>
+                            <Separator
+                    VerticalAlignment="Bottom"
+                    Background="DarkRed" Margin="20,0,10,2"/>
+                        </Grid>
                     </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Добавить" Margin="10" Click="Add_Click" />
-               </StackPanel>
-    </Grid>
+                </Grid>
+                
+                <!--Content-->
+
+
+                <ListBox 
+                    x:Name="tasksList" ItemsSource="{Binding}"
+                    Grid.Row="1" 
+                    Margin="10,5,10,10"
+                    Background="Wheat">
+                    <ListBox.ItemTemplate >
+                        <DataTemplate >
+                            <Border Background="Honeydew">
+                                <StackPanel  Width="300" Height="100" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                    
+                                    <TextBlock 
+                                        Text="{Binding Title}" 
+                                        FontSize="15"
+                                        FontWeight="Black"/>
+                                    <TextBlock 
+                                        Text="{Binding Description}" 
+                                        Grid.Row="1"
+                                        FontSize="11" 
+                                        FontStyle="Italic"/>
+
+                                    <StackPanel 
+                                        Orientation="Horizontal" 
+                                        Grid.Row="2" >
+                                        <TextBlock 
+                                            Text="{Binding DeadlineDate}" 
+                                            FontSize="13" />
+                                            <Button 
+                                                Content="Изменить" 
+                                                Margin="10" 
+                                                Click="Edit_Click">
+                                                <Button.Style>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        
+                                                    </Style>
+                                                    
+                                                </Button.Style>
+                                            </Button>
+                                            <Button 
+                                                Content="Удалить" 
+                                                Margin="10" 
+                                                Click="Delete_Click"  />
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+        </Grid>
+    </Border>
 </Window>
