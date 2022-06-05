@@ -61,7 +61,74 @@
                             <Setter Property="Height" Value="50"/>
                             <Setter Property="Background" Value="Bisque"/>
                             <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </Button.Style>
+                </Button>
+                
+                <!--Sort by name-->
+                <Button 
+                     FontWeight="Bold" 
+                     Grid.Row="2"
+                     Content="Сортировать по имени" 
+                     Margin="20,35,22,35"        
+                     Click="SortByName_Click" 
+                     Height="Auto">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Background" Value="Bisque"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </Button.Style>
+                </Button>
+                
+                <!--Sort by date-->
+                <Button 
+                     FontWeight="Bold" 
+                     Grid.Row="3"
+                     Content="Сортировать по дате" 
+                     Margin="20,35,22,35"        
+                     Click="SortByDate_Click" Height="Auto">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Background" Value="Bisque"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -126,54 +193,112 @@
                 
                 <!--Content-->
 
-
                 <ListBox 
-                    x:Name="tasksList" ItemsSource="{Binding}"
+                    x:Name="tasksList" 
+                    ItemsSource="{Binding}"
                     Grid.Row="1" 
-                    Margin="10,5,10,10"
+                    Margin="10"
                     Background="Wheat">
                     <ListBox.ItemTemplate >
                         <DataTemplate >
-                            <Border Background="Honeydew">
-                                <StackPanel  Width="300" Height="100" >
+                            <Border 
+                                Background="Honeydew">
+                                <StackPanel  
+                                    Width="300" 
+                                    Height="100" >
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="26"/>
+                                            <RowDefinition Height="35"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                    
-                                    <TextBlock 
-                                        Text="{Binding Title}" 
-                                        FontSize="15"
-                                        FontWeight="Black"/>
-                                    <TextBlock 
-                                        Text="{Binding Description}" 
-                                        Grid.Row="1"
-                                        FontSize="11" 
-                                        FontStyle="Italic"/>
 
-                                    <StackPanel 
+                                        <TextBlock 
+                                            Text="{Binding Title}" 
+                                            FontSize="13"
+                                            FontWeight="Black"
+                                            Margin="5"/>
+                                        <TextBlock 
+                                             Text="{Binding Description}" 
+                                             Grid.Row="1"
+                                             FontSize="10" 
+                                             FontStyle="Italic"
+                                             Margin="5"/>
+
+                                        <StackPanel 
                                         Orientation="Horizontal" 
                                         Grid.Row="2" >
-                                        <TextBlock 
-                                            Text="{Binding DeadlineDate}" 
-                                            FontSize="13" />
+                                            <TextBlock
+                                            Text="{Binding DeadlineDate, StringFormat=\{0:dd.MM.yy\}}" 
+                                            FontSize="9" 
+                                            Margin="5"
+                                            Width="70"/>
+                                       
+                                            
                                             <Button 
                                                 Content="Изменить" 
-                                                Margin="10" 
-                                                Click="Edit_Click">
+                                                Margin="7" 
+                                                Click="Edit_Click" >
                                                 <Button.Style>
-                                                    <Style TargetType="{x:Type Button}">
-                                                        
-                                                    </Style>
-                                                    
+                                                   
+                                                            <Style TargetType="{x:Type Button}">
+                                                                <Setter Property="Height" Value="30"/>
+                                                                <Setter Property="Background" Value="Bisque"/>
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="FontSize" Value="14"/>
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                                            <Border
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                                                <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                                                                            </Border>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+
+                                                       
+
                                                 </Button.Style>
                                             </Button>
                                             <Button 
                                                 Content="Удалить" 
-                                                Margin="10" 
-                                                Click="Delete_Click"  />
+                                                Margin="7" 
+                                                Click="Delete_Click">
+                                                <Button.Style>
+
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="Height" Value="30"/>
+                                                        <Setter Property="Background" Value="Bisque"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                        <Setter Property="FontSize" Value="14"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                                    <Border
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                                        <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+
+
+
+                                                </Button.Style>
+                                            </Button>
                                         </StackPanel>
                                     </Grid>
                                 </StackPanel>
@@ -181,7 +306,6 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-
             </Grid>
         </Grid>
     </Border>
