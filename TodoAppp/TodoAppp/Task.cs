@@ -12,7 +12,8 @@ namespace TodoAppp
     {
         private string title;
         private string task;
-        private DateTime deadlinedate;
+        private DateTime deadlinedate = DateTime.Today;
+        
 
         public int Id { get; set; }
 
@@ -21,7 +22,7 @@ namespace TodoAppp
             get { return title; }
             set
             {
-                title = value;
+                    title = value;
                 OnPropertyChanged("Title");
             }
         }
@@ -39,7 +40,9 @@ namespace TodoAppp
             get { return deadlinedate; }
             set
             {
+                deadlinedate = deadlinedate.Date;
                 deadlinedate = value;
+                
                 OnPropertyChanged("DeadlineDate");
             }
         }
